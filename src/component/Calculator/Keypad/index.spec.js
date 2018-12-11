@@ -1,12 +1,20 @@
 import React from "react";
-import Keypad from ".";
+import Keypad from "./index";
 import { shallow } from "enzyme";
 
 describe("Keypad component", () => {
 	let wrapper;
 
 	beforeEach(() => {
-		wrapper = shallow(<Keypad />);
+		wrapper = shallow(
+			<Keypad
+				callOperator={jest.fn()}
+				setOperators={jest.fn()}
+				updateDisplay={jest.fn()}
+				numbers={[]}
+				operators={[]}
+			/>
+		);
 	});
 
 	it("should have a div element", () => {

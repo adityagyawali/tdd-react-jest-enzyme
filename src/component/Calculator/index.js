@@ -25,10 +25,17 @@ class Calculator extends Component {
 		console.log("update display");
 	};
 	render() {
+		const { displayValue, numbers, operators } = this.state;
 		return (
 			<div className="calculator-container">
-				<Display />
-				<Keypad />
+				<Display displayValue={displayValue} />
+				<Keypad
+					callOperator={this.callOperator}
+					setOperators={this.setOperators}
+					updateDisplay={this.updateDisplay}
+					numbers={numbers}
+					operators={operators}
+				/>
 			</div>
 		);
 	}
