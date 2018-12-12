@@ -11,6 +11,10 @@ describe("Display", () => {
 		wrapper = shallow(<Display displayValue={""} />);
 	});
 
+	it("should render correctly", () => {
+		expect(wrapper).toMatchSnapshot();
+	});
+
 	it("should have a div element", () => {
 		expect(wrapper.find("div")).toHaveLength(1);
 	});

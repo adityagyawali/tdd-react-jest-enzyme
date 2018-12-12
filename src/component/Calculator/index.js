@@ -6,14 +6,19 @@ import "./index.css";
 
 class Calculator extends Component {
 	state = {
+		//value to be displayed in the screen
 		displayValue: 0,
-		numbers: [],
-		operators: [],
+
+		numbers: ["9", "8", "7", "6", "5", "4", "3", "2", "1", ".", "0", "ce"],
+		operators: ["/", "x", "-", "+"],
+		//operators seclectd form math orpeators
 		selectedOperators: "",
+		//stored value to use for math operatorn
 		storedValue: ""
 	};
 
 	callOperator = () => {
+		//when submit button is clicked
 		console.log("call operation");
 	};
 
