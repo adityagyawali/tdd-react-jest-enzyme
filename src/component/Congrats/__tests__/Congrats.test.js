@@ -1,8 +1,8 @@
 import React from "react";
 import { shallow } from "enzyme";
-
+import checkPropTypes from "check-prop-types";
 import Congrats from "..";
-import { findByTestAttr } from "../../../test/testUtils.js";
+import { findByTestAttr, checkProps } from "../../../test/testUtils.js";
 
 const setup = (props = {}) => {
 	return shallow(<Congrats {...props} />);
@@ -24,4 +24,9 @@ it("should render congrats message when the `success props` is true ", () => {
 	const wrapper = setup({ success: true });
 	const message = findByTestAttr(wrapper, "congrats-message");
 	expect(message.text().length).not.toBe(1); //not.toBe(1) refers to non zero value
+});
+
+it("should not throw warning with expected props", () => {
+	const expectedProps = { success: false };
+	checkProps(Congrats, expectedProps);
 });
