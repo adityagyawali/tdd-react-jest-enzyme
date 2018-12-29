@@ -1,16 +1,9 @@
-import React, { Component } from "react";
-// import Calculator from "./component/Calculator";
+import * as React from "react";
 import "./App.css";
 
-import ClickCounter from "./component/ClickCounter";
-
-class App extends Component {
+class App extends React.Component {
 	render() {
-		return (
-			<div className="App">
-				<ClickCounter />
-			</div>
-		);
+		return <div className="App">Hello Joto</div>;
 	}
 }
 
