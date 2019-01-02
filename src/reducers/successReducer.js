@@ -1,7 +1,6 @@
 import * as actionTypes from "../actions/actionTypes";
-const initalState = false;
 
-export const successReducer = (state = initalState, action) => {
+export const successReducer = (state = false, action) => {
 	switch (action.type) {
 		case actionTypes.CORRECT_GUESS:
 			return true;
