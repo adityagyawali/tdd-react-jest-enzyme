@@ -1,24 +1,53 @@
 import React from "react";
 import { shallow } from "enzyme";
 
-import Input from "..";
+import { Input } from "..";
 
-import { findByTestAttr, storeFactory } from "../../../test/testUtils";
+import { findByTestAttr } from "../../../test/testUtils";
 
-const setup = (initialState = {}) => {
-	const store = storeFactory(initialState);
-	const wrapper = shallow(<Input store={store} />).dive();
+const defaultProps = { success: false };
+const setup = (props = {}) => {
+	const setupProps = { ...defaultProps, ...props };
+	return shallow(<Input {...setupProps} />);
 };
 
 describe("Input Component", () => {
 	describe("when the word has not been guessed", () => {
-		it("renders the component without error", () => {});
-		it("renders the input box", () => {});
-		it("renders the submit button ", () => {});
+		let wrapper;
+		beforeEach(() => {
+			const initialState = { success: false };
+			wrapper = setup(initialState);
+		});
+		it("renders the component without error", () => {
+			const component = findByTestAttr(wrapper, "component-input");
+			expect(component.length).toBe(1);
+		});
+		it("renders the input box", () => {
+			const inputBox = findByTestAttr(wrapper, "input-box");
+			expect(inputBox.length).toBe(1);
+		});
+		it("renders the submit button ", () => {
+			const submitButton = findByTestAttr(wrapper, "submit-button");
+			expect(submitButton.length).toBe(1);
+		});
 	});
 	describe("when the word has  been guessed", () => {
-		it("renders the component without error", () => {});
-		it("does not renders the input box", () => {});
-		it("does notrenders the submit button ", () => {});
+		let wrapper;
+		beforeEach(() => {
+			const initialState = { success: true };
+			wrapper = setup(initialState);
+		});
+		it("renders the component without error", () => {
+			const component = findByTestAttr(wrapper, "component-input");
+			expect(component.length).toBe(1);
+		});
+		it("does not renders the input box", () => {
+			const inputBox = findByTestAttr(wrapper, "input-box");
+			expect(inputBox.length).toBe(0);
+		});
+		it("does notrenders the submit button ", () => {
+			const submit = findByTestAttr(wrapper, "submit-button");
+			expect(submit.length).toBe(0);
+		});
 	});
 });
